@@ -29,21 +29,28 @@ Output:
 
 
 def solution(i):
-    prime_str = '2'
+    prime_str = '23'
     if i < 10: 
     	endNum = i+30
     else: 
     	endNum = i*3
 
-    for isPrime in range(3, endNum):
+    for isPrime in range(5, endNum, 2):
         tester = False
-        for div in range(2, isPrime):
+        for div in range(3, isPrime, 2):
             if isPrime%div == 0:
                 tester = True
                 break
         if tester == False:
             prime_str += str(isPrime)
+        if len(prime_str) >= 10006:
+            break
     return prime_str[i:i+5:]
 
 
+#from timeit import default_timer as timer
+
+#start = timer()
 print(solution(5))
+#end = timer()
+#print((end - start)*1000, 'ms')
